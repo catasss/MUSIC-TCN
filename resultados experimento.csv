@@ -1,4 +1,4 @@
-Tamaño (N),Tiempo de ejecución (segundos),Operaciones
-100,0.000016,100
-1000,0.000149,1000
-100000,0.009625,100000
+Tamaño (N),Filtrado lineal (s),Indice - construccion (s),Indice - consulta (s),Speedup (lineal/indice)
+100,0.000005,0.000036,0.00000052,9.5
+1000,0.000036,0.000260,0.00000070,52.1
+100000,0.004408,0.031986,0.00009239,47.7
