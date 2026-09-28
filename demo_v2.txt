@@ -1,0 +1,117 @@
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar conexiones entre artistas (próximamente)
+10. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Título exacto: [7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar conexiones entre artistas (próximamente)
+10. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Empezá a escribir el título: Sugerencias (3):
+[4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar conexiones entre artistas (próximamente)
+10. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: [4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+[3] De Música Ligera - Soda Stereo (rock) - Año: 1990 - Popularidad: 92
+[1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[10] God's Plan - Drake (rap) - Año: 2018 - Popularidad: 96
+[14] HUMBLE. - Kendrick Lamar (rap) - Año: 2017 - Popularidad: 94
+[5] How You Like That - BLACKPINK (k-pop) - Año: 2020 - Popularidad: 90
+[13] Kill This Love - BLACKPINK (k-pop) - Año: 2019 - Popularidad: 87
+[8] Levitating - Dua Lipa (pop) - Año: 2020 - Popularidad: 91
+[2] Lose Yourself - Eminem (rap) - Año: 2002 - Popularidad: 98
+[12] Persiana Americana - Soda Stereo (rock) - Año: 1986 - Popularidad: 89
+[6] Sicko Mode - Travis Scott (rap) - Año: 2018 - Popularidad: 93
+[15] Watermelon Sugar - Harry Styles (pop) - Año: 2019 - Popularidad: 90
+[11] Zamba de mi Esperanza - Mercedes Sosa (folk) - Año: 1965 - Popularidad: 80
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar conexiones entre artistas (próximamente)
+10. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Ordenar por: 1) título 2) artista 3) año 4) popularidad 5) sin orden
+Elegí una opción: [1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[2] Lose Yourself - Eminem (rap) - Año: 2002 - Popularidad: 98
+[3] De Música Ligera - Soda Stereo (rock) - Año: 1990 - Popularidad: 92
+[4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[5] How You Like That - BLACKPINK (k-pop) - Año: 2020 - Popularidad: 90
+[6] Sicko Mode - Travis Scott (rap) - Año: 2018 - Popularidad: 93
+[7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+[8] Levitating - Dua Lipa (pop) - Año: 2020 - Popularidad: 91
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+[10] God's Plan - Drake (rap) - Año: 2018 - Popularidad: 96
+[11] Zamba de mi Esperanza - Mercedes Sosa (folk) - Año: 1965 - Popularidad: 80
+[12] Persiana Americana - Soda Stereo (rock) - Año: 1986 - Popularidad: 89
+[13] Kill This Love - BLACKPINK (k-pop) - Año: 2019 - Popularidad: 87
+[14] HUMBLE. - Kendrick Lamar (rap) - Año: 2017 - Popularidad: 94
+[15] Watermelon Sugar - Harry Styles (pop) - Año: 2019 - Popularidad: 90
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar conexiones entre artistas (próximamente)
+10. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: ¡Hasta la próxima!
