@@ -18,6 +18,7 @@ musictcn/
 ├── modelos.py                          # Clases del dominio: Cancion, Artista, Genero
 ├── gestor_musica.py                     # Clase CatalogoMusical: carga de datos y operaciones
 ├── arbol_canciones.py                   # Árbol binario de búsqueda (BST) ordenado por título
+├── arbol_avl.py                         # Árbol AVL (BST auto-balanceado) - Objetivo 4
 ├── test_arbol_canciones.py              # Pruebas unitarias del árbol (14 tests)
 ├── comparacion_arbol_vs_secuencial.py   # Script de comparación de estrategias
 ├── comparacion_arbol_vs_secuencial.md   # Análisis de complejidad y conclusión (Objetivo 3)
@@ -114,6 +115,41 @@ python3 -m unittest test_arbol_canciones.py -v      # pruebas del árbol
 python3 comparacion_arbol_vs_secuencial.py            # comparación de estrategias
 ```
 
+## Objetivo 4: AVL — El árbol también puede enfermarse
+
+### ¿Qué es el problema?
+
+Un BST común se **degenera** cuando los datos se insertan en orden
+(ascendente o descendente). En ese caso, el árbol se convierte en una
+lista enlazada y la búsqueda pasa de **O(log n)** a **O(n)**.
+
+### Solución: Árbol AVL
+
+El AVL es un BST auto-balanceado que usa **rotaciones** para mantener
+la altura en **O(log n)** siempre.
+
+| Rotación | Caso |
+|----------|------|
+| Derecha (LL) | Hijo izquierdo crece a la izquierda |
+| Izquierda (RR) | Hijo derecho crece a la derecha |
+| Izq-Der (LR) | Hijo izquierdo crece a la derecha |
+| Der-Izq (RL) | Hijo derecho crece a la izquierda |
+
+### Demo comparativa
+
+Insertando 20 títulos en orden alfabético:
+
+| Métrica | BST común | AVL |
+|---------|-----------|-----|
+| Altura | 20 (degenerado) | 5 (balanceado) |
+| Búsqueda peor caso | 20 comparaciones | 5 comparaciones |
+
+### Cómo ejecutar
+
+```bash
+python arbol_avl.py
+```
+
 ## Datos de prueba
 
 `datos/canciones.json` contiene 15 canciones de ejemplo cubriendo los
@@ -134,8 +170,8 @@ y salir).
 - Clase `Usuario` con gustos/historial para recomendaciones personalizadas.
 - Modelo de grafo de colaboraciones entre artistas (opciones "conexiones"
   y "camino de colaboraciones" del enunciado original).
-- Balanceo automático del árbol (AVL o Rojo-Negro) para garantizar
-  O(log n) incluso ante inserciones adversariales, no solo en el caso
-  promedio.
+- Integrar el AVL (`arbol_avl.py`) como reemplazo del BST en
+  `CatalogoMusical`, para garantizar O(log n) incluso ante inserciones
+  adversariales, no solo en el caso promedio.
 - Persistencia de cambios (agregar/editar canciones) más allá de la carga
   inicial de datos.
