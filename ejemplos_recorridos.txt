@@ -1,0 +1,119 @@
+
+================================================================
+1. El árbol (entre paréntesis, cantidad de canciones)
+================================================================
+Música (15)
+├── Pop y derivados (7)
+│   ├── Pop (3)
+│   │   ├── Dua Lipa (1)
+│   │   ├── Harry Styles (1)
+│   │   └── The Weeknd (1)
+│   └── K-pop (4)
+│       ├── BLACKPINK (2)
+│       └── BTS (2)
+├── Rock y alternativo (3)
+│   └── Rock (3)
+│       ├── Queen (1)
+│       └── Soda Stereo (2)
+├── Hip hop y urbano (4)
+│   └── Rap (4)
+│       ├── Drake (1)
+│       ├── Eminem (1)
+│       ├── Kendrick Lamar (1)
+│       └── Travis Scott (1)
+└── Folklore y raíces (1)
+    └── Folk (1)
+        └── Mercedes Sosa (1)
+
+Nodos: 22 | Niveles: 4 | Hojas: 12
+
+================================================================
+2. PREORDEN: el padre antes que sus hijos
+================================================================
+Uso: mostrar la jerarquía de arriba hacia abajo; también es el
+orden en que 'buscar' encuentra el primer nodo con ese nombre.
+
+Música -> Pop y derivados -> Pop -> Dua Lipa -> Harry Styles -> The Weeknd -> K-pop -> BLACKPINK -> BTS -> Rock y alternativo -> Rock -> Queen -> Soda Stereo -> Hip hop y urbano -> Rap -> Drake -> Eminem -> Kendrick Lamar -> Travis Scott -> Folklore y raíces -> Folk -> Mercedes Sosa
+
+================================================================
+3. POSTORDEN: los hijos antes que el padre
+================================================================
+Uso: cuando el valor de un padre depende de sus hijos. Acá se
+calcula cuántas canciones tiene cada categoría: cada artista cuenta
+las suyas y cada nodo superior suma lo que ya calcularon sus hijos.
+
+  Dua Lipa              1   (artista: cuenta sus canciones)
+  Harry Styles          1   (artista: cuenta sus canciones)
+  The Weeknd            1   (artista: cuenta sus canciones)
+  Pop                   3   (suma de Dua Lipa=1, Harry Styles=1, The Weeknd=1)
+  BLACKPINK             2   (artista: cuenta sus canciones)
+  BTS                   2   (artista: cuenta sus canciones)
+  K-pop                 4   (suma de BLACKPINK=2, BTS=2)
+  Pop y derivados       7   (suma de Pop=3, K-pop=4)
+  Queen                 1   (artista: cuenta sus canciones)
+  Soda Stereo           2   (artista: cuenta sus canciones)
+  Rock                  3   (suma de Queen=1, Soda Stereo=2)
+  Rock y alternativo    3   (suma de Rock=3)
+  Drake                 1   (artista: cuenta sus canciones)
+  Eminem                1   (artista: cuenta sus canciones)
+  Kendrick Lamar        1   (artista: cuenta sus canciones)
+  Travis Scott          1   (artista: cuenta sus canciones)
+  Rap                   4   (suma de Drake=1, Eminem=1, Kendrick Lamar=1, Travis Scott=1)
+  Hip hop y urbano      4   (suma de Rap=4)
+  Mercedes Sosa         1   (artista: cuenta sus canciones)
+  Folk                  1   (suma de Mercedes Sosa=1)
+  Folklore y raíces     1   (suma de Folk=1)
+  Música               15   (suma de Pop y derivados=7, Rock y alternativo=3, Hip hop y urbano=4, Folklore y raíces=1)
+
+================================================================
+4. POR NIVELES (anchura): un nivel a la vez
+================================================================
+Uso: ver qué tan 'ancho' es cada nivel (familias, géneros, artistas).
+
+  Nivel 0 (raíz): Música
+  Nivel 1 (familias): Pop y derivados, Rock y alternativo, Hip hop y urbano, Folklore y raíces
+  Nivel 2 (géneros): Pop, K-pop, Rock, Rap, Folk
+  Nivel 3 (artistas): Dua Lipa, Harry Styles, The Weeknd, BLACKPINK, BTS, Queen, Soda Stereo, Drake, Eminem, Kendrick Lamar, Travis Scott, Mercedes Sosa
+
+================================================================
+5. Recorrer solo un subárbol (desde 'Pop y derivados')
+================================================================
+Pop y derivados (7)
+├── Pop (3)
+│   ├── Dua Lipa (1)
+│   ├── Harry Styles (1)
+│   └── The Weeknd (1)
+└── K-pop (4)
+    ├── BLACKPINK (2)
+    └── BTS (2)
+
+Preorden desde ahí : Pop y derivados -> Pop -> Dua Lipa -> Harry Styles -> The Weeknd -> K-pop -> BLACKPINK -> BTS
+Postorden desde ahí: Dua Lipa -> Harry Styles -> The Weeknd -> Pop -> BLACKPINK -> BTS -> K-pop -> Pop y derivados
+Géneros que cubre  : pop, k-pop
+Canciones          :
+    Dynamite - BTS
+    Blinding Lights - The Weeknd
+    How You Like That - BLACKPINK
+    Levitating - Dua Lipa
+    Boy With Luv - BTS
+    Kill This Love - BLACKPINK
+    Watermelon Sugar - Harry Styles
+
+================================================================
+6. Búsquedas
+================================================================
+buscar('k-pop')           -> K-pop | ruta: Música > Pop y derivados > K-pop
+buscar_parcial('pop')     -> ['Pop y derivados', 'Pop', 'K-pop']
+buscar_por_genero('rap')  -> Rap
+buscar('Jazz')            -> None
+ruta de 'Dynamite'        -> Música > Pop y derivados > K-pop > BTS
+
+================================================================
+7. El árbol crece solo: un género nuevo cae en 'Otros'
+================================================================
+Otros (1)
+└── Cumbia (1)
+    └── Los Test (1)
+
+ruta de 'Cumbia Test'     -> Música > Otros > Cumbia > Los Test
+Total del catálogo ahora   -> 16 canciones
