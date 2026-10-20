@@ -1,11 +1,13 @@
-# MUSICTCN — v2
+# MUSICTCN — v3
 
 Programa de terminal para explorar un catálogo de canciones: buscar por
 título/artista, buscar por título exacto y autocompletar (con un árbol
 binario de búsqueda), listar, filtrar por género/año/popularidad y ver
 un top 10.
 
-Esta v2 incorpora el **Objetivo 3: "Poné un árbol en tu sistema"** —un
+Esta v3 suma el **Objetivo 5: árboles generales (n-arios)** —una jerarquía
+Música > familia > género > artista, integrada a la opción 9 del menú— sobre
+la v2, que incorporó el **Objetivo 3: "Poné un árbol en tu sistema"** —un
 árbol binario de búsqueda ordenado por título, integrado a operaciones
 reales del menú— sobre la base de la v1 (Objetivo 1: "Construí el
 corazón del sistema").
@@ -13,22 +15,23 @@ corazón del sistema").
 ## Estructura del proyecto
 
 ```
-musictcn/
-├── main.py                            # Interfaz de terminal (menú, entrada del usuario)
-├── modelos.py                          # Clases del dominio: Cancion, Artista, Genero
-├── gestor_musica.py                     # Clase CatalogoMusical: carga de datos y operaciones
-├── arbol_canciones.py                   # Árbol binario de búsqueda (BST) ordenado por título
-├── arbol_avl.py                         # Árbol AVL (BST auto-balanceado) - Objetivo 4
-├── test_arbol_canciones.py              # Pruebas unitarias del árbol (14 tests)
-├── comparacion_arbol_vs_secuencial.py   # Script de comparación de estrategias
-├── comparacion_arbol_vs_secuencial.md   # Análisis de complejidad y conclusión (Objetivo 3)
-├── resultados_arbol_vs_secuencial.csv   # Resultados reales de la comparación
+MUSIC-TCN/
+├── main_v3.py                         # Interfaz de terminal v3 (menú, entrada del usuario)
+├── gestor_musica_v3.py                # CatalogoMusical v3: datos, árbol BST y árbol de categorías
+├── modelos.py                         # Clases del dominio: Cancion, Artista, Genero
+├── arbol_canciones.py                 # BST ordenado por título (Objetivo 3)
+├── arbol_avl.py                       # Árbol AVL (Objetivo 4)
+├── arbol_general.py                   # Árbol general / n-ario de categorías (Objetivo 5)
+├── ejemplos_recorridos.py / .txt      # Ejemplos de recorridos del árbol general y su salida (Objetivo 5)
+├── test_arbol_canciones.py            # Pruebas del BST
+├── test_arbol_general.py              # Pruebas del árbol general + integración con el catálogo
+├── test_gestor_categorias.py          # Pruebas del conteo por categoría y casos borde
 ├── datos/
-│   ├── canciones.json                   # Datos de prueba (formato JSON)
-│   └── canciones.csv                    # Los mismos datos de prueba en CSV
-├── complejidad/                         # Objetivo 2: filtrado lineal vs. filtrado indexado
-├── demo_v1.txt                          # Transcripción de una sesión de ejemplo (v1)
-└── README.md
+│   ├── canciones.json                 # Catálogo de prueba
+│   └── categorias.json                # Jerarquía: familias y géneros (los artistas salen del catálogo)
+├── main_v2.py / gestor_musica_v2.py   # Versión 2 (se conservan)
+├── demo_v1.txt, demo_v2.txt, demo_v3.txt   # Sesiones de ejemplo de cada versión
+└── (experimento.py, estrategias_busqueda.py, comparacion_*, analisis complejidad.md, ...)  # Objetivos 2 y 3
 ```
 
 ### Diseño
@@ -59,8 +62,7 @@ musictcn/
 ## Cómo ejecutar
 
 ```bash
-cd musictcn
-python3 main.py
+python3 main_v3.py
 ```
 
 Vas a ver un menú como este:
@@ -77,8 +79,9 @@ Vas a ver un menú como este:
 6. Listar todo el catálogo
 7. Listar ordenado alfabéticamente (árbol - inorder)
 8. Filtrar canciones
-9. Explorar conexiones entre artistas (próximamente)
-10. Obtener recomendaciones personalizadas (próximamente)
+9. Explorar categorías (árbol general)
+10. Explorar conexiones entre artistas (próximamente)
+11. Obtener recomendaciones personalizadas (próximamente)
 0. Salir
 ----------------------------------------
 ```
@@ -149,6 +152,67 @@ Insertando 20 títulos en orden alfabético:
 ```bash
 python arbol_avl.py
 ```
+
+## Objetivo 5: árbol general — "Organizá tu universo"
+
+La jerarquía natural del dominio es un **árbol general** (cada nodo puede
+tener cualquier cantidad de hijos y no hay orden entre ellos; modela una
+relación "es parte de", no una clave de búsqueda):
+
+```
+Música
+├── Pop y derivados
+│   ├── Pop
+│   │   ├── Dua Lipa
+│   │   └── ...
+│   └── K-pop
+│       ├── BLACKPINK
+│       └── BTS
+├── Rock y alternativo
+├── Hip hop y urbano
+└── Folklore y raíces
+```
+
+- **Familias y géneros** se definen en `datos/categorias.json`.
+- **Los artistas no se escriben a mano:** `CatalogoMusical` los genera desde
+  el catálogo real cada vez que se cargan datos. Un género que no está en
+  el JSON cae solo en la familia **Otros**.
+- **`arbol_general.py`** tiene el árbol y sus recorridos (preorden, postorden,
+  por niveles), búsquedas (exacta, parcial, por género), `ruta()` y `dibujar()`.
+- **`gestor_musica_v3.py`** conecta ambos mundos: `canciones_de_categoria()`,
+  `ruta_categoria_de()`, `buscar_categoria()` y `conteo_por_categoria()`
+  (que usa un recorrido en **postorden**, porque el valor de un padre depende
+  de sus hijos).
+
+### Opción 9 del menú: "Explorar categorías"
+
+| # | Acción | Qué hace |
+|---|--------|----------|
+| 1 | Ver el árbol completo | Dibuja el árbol con la cantidad de canciones de cada nodo |
+| 2 | Navegar | Se entra a una subcategoría con su número, se sube con `u`, se listan canciones con `c` |
+| 3 | Buscar una categoría | Búsqueda parcial por nombre; muestra la ruta y permite explorarla |
+| 4 | Ver un recorrido | Preorden, postorden o por niveles, desde la raíz o desde una categoría |
+| 5 | Ruta de una canción | Ej: `Música > Pop y derivados > K-pop > BTS` |
+
+### Ejemplos de recorridos
+
+`ejemplos_recorridos.py` muestra los tres recorridos sobre el catálogo real,
+para qué sirve cada uno y búsquedas con ruta. Su salida está en
+`ejemplos_recorridos.txt`; una sesión de terminal completa, en `demo_v3.txt`.
+
+```bash
+python3 ejemplos_recorridos.py
+python3 -m unittest test_arbol_general test_gestor_categorias -v
+```
+
+### Complejidad (n = cantidad de nodos)
+
+| Operación | Costo |
+|-----------|-------|
+| Agregar un hijo a un nodo conocido | O(1) |
+| Buscar por nombre | O(n) (no hay orden entre hermanos) |
+| Ruta desde la raíz | O(h), h = altura |
+| Recorridos (preorden, postorden, por niveles) | O(n) |
 
 ## Datos de prueba
 
