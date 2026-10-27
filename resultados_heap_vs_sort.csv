@@ -1,0 +1,4 @@
+n,unica_sort_ms,unica_heap_construccion_ms,unica_heap_consulta_ms,comparaciones_sort,comparaciones_heap_construccion,comparaciones_heap_consulta,dinamico_sort_ms_por_ronda,dinamico_heap_ms_por_ronda,dinamico_speedup
+1000,0.57,1.11,0.0474,8641,1855,54,0.61,0.0193,31.7
+10000,6.1,10.97,0.052,119827,18866,52,6.32,0.0185,342.2
+100000,84.93,224.71,0.0699,1528975,187973,55,85.48,0.0235,3641.6
