@@ -13,7 +13,7 @@ una próxima versión, ya que requieren un modelo de grafo de colaboraciones
 que todavía no forma parte del dominio de esta v2.
 """
 
-from gestor_musica import CatalogoMusical
+from gestor_musica_v2 import CatalogoMusical
 
 RUTA_DATOS = "datos/canciones.json"
 

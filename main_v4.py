@@ -22,7 +22,7 @@ como pendientes: requieren un grafo de colaboraciones y una clase Usuario
 que todavía no forman parte del dominio.
 """
 
-from gestor_musica import CatalogoMusical
+from gestor_musica_v4 import CatalogoMusical
 from modelos import Cancion
 from prioridad import CriterioPrioridad
 

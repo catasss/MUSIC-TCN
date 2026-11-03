@@ -1,4 +1,4 @@
-# MUSICTCN — v4
+# MUSICTCN — v5
 
 Programa de terminal para explorar un catálogo de canciones: buscar por
 título/artista, buscar por título exacto y autocompletar (con un árbol
@@ -6,7 +6,9 @@ binario de búsqueda), explorar el catálogo por categorías (con un árbol
 general), listar, filtrar por género/año/popularidad y obtener un ranking
 dinámico de recomendaciones (con una cola de prioridad).
 
-Esta v4 incorpora el **Objetivo 6: "Que el sistema elija primero"** —un
+Esta v5 suma el **Objetivo 7: "Conectá las cosas"** —un grafo de artistas
+(vértice = artista, arista = comparten género) con lista de adyacencia, caminos
+y grupos— sobre la v4, que incorporó el **Objetivo 6: "Que el sistema elija primero"** —un
 heap binario escrito a mano que mantiene un ranking dinámico de
 recomendaciones— sobre la base de la v3 (Objetivo 5: "Organizá tu
 universo", árboles generales), la v2 (Objetivo 3: "Poné un árbol en tu
@@ -16,9 +18,13 @@ sistema") y la v1 (Objetivo 1: "Construí el corazón del sistema").
 
 ```
 musictcn/
-├── main.py                            # Interfaz de terminal (menú, entrada del usuario)
+├── main_v5.py                         # Interfaz de terminal v5 (menú, entrada del usuario)
 ├── modelos.py                          # Clases del dominio: Cancion, Artista, Genero
-├── gestor_musica.py                     # Clase CatalogoMusical: carga de datos y operaciones
+├── gestor_musica_v5.py                  # Clase CatalogoMusical: carga de datos y operaciones
+├── grafo.py                             # Grafo no dirigido con lista de adyacencia - Objetivo 7
+├── modelo_grafo.md                      # Vértices, aristas, tipo y representación (justificados)
+├── ejemplos_consultas_grafo.py / .txt   # Ejemplos de consultas sobre el grafo y su salida
+├── test_grafo.py                        # Pruebas del grafo y de su integración (27 tests)
 ├── arbol_canciones.py                   # Árbol binario de búsqueda (BST) ordenado por título
 ├── arbol_avl.py                         # Árbol AVL (BST auto-balanceado) - Objetivo 4
 ├── arbol_general.py                     # Árbol general (n-ario) de categorías - Objetivo 5
@@ -52,6 +58,7 @@ musictcn/
 ├── demo_v2.txt                          # Transcripción de una sesión de ejemplo (v2)
 ├── demo_v3.txt                          # Transcripción de una sesión de ejemplo (v3)
 ├── demo_v4.txt                          # Transcripción de una sesión de ejemplo (v4)
+├── demo_v5.txt                          # Transcripción de una sesión de ejemplo (v5)
 └── README.md
 ```
 
@@ -98,8 +105,7 @@ musictcn/
 ## Cómo ejecutar
 
 ```bash
-cd musictcn
-python3 main.py
+python3 main_v5.py
 ```
 
 Vas a ver un menú como este:
@@ -121,7 +127,7 @@ Vas a ver un menú como este:
 11. Buscar categoría por nombre
 12. Ranking de recomendaciones (heap)
 13. Agregar canción (el ranking se actualiza)
-14. Explorar conexiones entre artistas (próximamente)
+14. Explorar conexiones entre artistas (grafo)
 15. Recomendaciones personalizadas por perfil (próximamente)
 0. Salir
 ----------------------------------------
@@ -129,7 +135,7 @@ Vas a ver un menú como este:
 
 Elegí una opción escribiendo el número y presionando Enter.
 
-## Operaciones implementadas en v4
+## Operaciones implementadas en v5
 
 | # | Operación | Estrategia | Descripción |
 |---|-----------|-----------|-------------|
@@ -377,6 +383,52 @@ python3 comparacion_heap_vs_sort.py             # experimento heap vs ordenar to
 python3 main.py                                 # la app (opciones 12 y 13)
 ```
 
+## Objetivo 7: grafos — Conectá las cosas
+
+El modelo completo está en [`modelo_grafo.md`](modelo_grafo.md). Las cuatro
+decisiones y su justificación:
+
+| Decisión | Elección | Justificación |
+|---|---|---|
+| **Vértice** | un artista | Es lo que de forma natural "se conecta" con otros. Con canciones como vértices, casi todo quedaría unido por tener el mismo artista o género y el grafo no aportaría nada. |
+| **Arista** | dos artistas comparten género (tienen canciones en un mismo género) | Es la relación más simple de calcular con los datos que ya tiene el catálogo. Un artista con canciones en dos géneros queda en dos grupos y hace de puente entre ellos. |
+| **Tipo** | no dirigido y sin pesos | No dirigido: si A comparte género con B, B lo comparte con A (relación simétrica). Sin pesos: o se comparte género o no, no hay grados de conexión que medir; por eso el camino más corto se calcula con BFS y no hace falta Dijkstra. |
+| **Representación** | lista de adyacencia | El grafo es ralo: con 12 artistas y 11 aristas de 66 posibles la densidad es 17% (una matriz de 144 celdas usaría solo 22). En un catálogo grande la densidad ronda 1 / (cantidad de géneros), unos 5% con 20 géneros, así que la lista ocupa O(V + E) en vez de O(V²). Lo único que la matriz haría mejor (saber en O(1) si dos artistas están conectados) casi no se usa: lo habitual es "¿con quién se conecta?". |
+
+```
+Grupo rap   : Drake, Eminem, Kendrick Lamar, Travis Scott   (todos conectados entre sí)
+Grupo pop   : Dua Lipa, Harry Styles, The Weeknd            (todos conectados entre sí)
+Grupo k-pop : BTS, BLACKPINK
+Grupo rock  : Queen, Soda Stereo
+Grupo folk  : Mercedes Sosa                                 (sin conexiones)
+```
+
+`grafo.py` implementa la estructura a mano (sin librerías): vecinos, grado,
+densidad, recorridos BFS y DFS, camino más corto, artistas a N saltos y
+componentes conexas. `CatalogoMusical` (v5) arma el grafo desde las
+canciones y lo reconstruye cada vez que cambian los datos.
+
+### Opción 14 del menú: "Explorar conexiones entre artistas"
+
+| # | Acción |
+|---|--------|
+| 1 | Ver el grafo completo (lista de adyacencia, cantidad de artistas, conexiones y densidad) |
+| 2 | Ver con quién se conecta un artista |
+| 3 | Camino más corto entre dos artistas |
+| 4 | Artistas a N saltos de un artista |
+| 5 | Ver los grupos de artistas separados |
+
+Un artista con canciones en dos géneros hace de puente: en `demo_v5.txt`,
+al agregar con la opción 13 "Pray for Me" de The Weeknd como rap, aparece
+el camino Harry Styles → The Weeknd → Drake y los grupos pasan de 5 a 4.
+
+### Ejemplos de consultas
+
+```bash
+python3 ejemplos_consultas_grafo.py     # salida en ejemplos_consultas_grafo.txt
+python3 -m unittest test_grafo -v
+```
+
 ## Datos de prueba
 
 `datos/canciones.json` contiene 15 canciones de ejemplo cubriendo los
@@ -394,13 +446,15 @@ Transcripciones de sesiones reales de la app, una por versión:
 exacta, autocompletado y listado por inorder), `demo_v3.txt`
 (jerarquía completa, buscar categoría y explorar categorías) y
 `demo_v4.txt` (ranking con distintos criterios, agregar una canción y ver
-cómo el ranking se actualiza).
+cómo el ranking se actualiza) y
+`demo_v5.txt` (grafo de artistas: conexiones, caminos, grupos y un artista
+que hace de puente).
 
-## Próximos pasos (fuera del alcance de v4)
+## Próximos pasos (fuera del alcance de v5)
 
 - Clase `Usuario` con gustos/historial para recomendaciones personalizadas.
-- Modelo de grafo de colaboraciones entre artistas (opciones "conexiones"
-  y "camino de colaboraciones" del enunciado original).
+- Colaboraciones reales entre artistas y aristas con peso en el grafo (el
+  camino mínimo pasaría a usar Dijkstra con la cola de prioridad del TP6).
 - Integrar el AVL (`arbol_avl.py`) como reemplazo del BST en
   `CatalogoMusical`, para garantizar O(log n) incluso ante inserciones
   adversariales, no solo en el caso promedio.
