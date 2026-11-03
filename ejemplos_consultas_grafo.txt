@@ -1,0 +1,79 @@
+
+================================================================
+1. El grafo (vértice = artista, arista = comparten género)
+================================================================
+BLACKPINK -> BTS
+BTS -> BLACKPINK
+Drake -> Eminem, Kendrick Lamar, Travis Scott
+Dua Lipa -> Harry Styles, The Weeknd
+Eminem -> Drake, Kendrick Lamar, Travis Scott
+Harry Styles -> Dua Lipa, The Weeknd
+Kendrick Lamar -> Drake, Eminem, Travis Scott
+Mercedes Sosa -> (sin conexiones)
+Queen -> Soda Stereo
+Soda Stereo -> Queen
+The Weeknd -> Dua Lipa, Harry Styles
+Travis Scott -> Drake, Eminem, Kendrick Lamar
+
+================================================================
+2. Por qué lista de adyacencia: densidad del grafo
+================================================================
+Vértices: 12 | Aristas: 11 | Densidad: 16.7%
+Matriz de adyacencia: 12 x 12 = 144 celdas, solo 22 con una conexión (15%); el resto guarda ceros.
+Lista de adyacencia : 12 listas con 22 entradas en total.
+En un catálogo grande la densidad tiende a 1 / (cantidad de géneros):
+con 20 géneros repartidos parejo, ronda el 5%. Una matriz de 10.000
+artistas ocuparía 100 millones de celdas casi vacías.
+
+================================================================
+3. Vecinos y grado
+================================================================
+Drake          grado 3: Eminem, Kendrick Lamar, Travis Scott
+BTS            grado 1: BLACKPINK
+Mercedes Sosa  grado 0: (sin conexiones)
+
+Artistas con más conexiones (grado 3): Eminem, Travis Scott, Drake, Kendrick Lamar
+Artistas aislados: ['Mercedes Sosa']
+
+================================================================
+4. Recorridos desde Dua Lipa
+================================================================
+BFS (anchura)     : Dua Lipa -> The Weeknd -> Harry Styles
+DFS (profundidad) : Dua Lipa -> The Weeknd -> Harry Styles
+
+================================================================
+5. Camino más corto (BFS)
+================================================================
+Drake a Eminem: Drake -> Eminem  (1 salto)
+Drake a BTS: no hay camino (grupos separados)
+Queen a Soda Stereo: Queen -> Soda Stereo  (1 salto)
+
+================================================================
+6. Componentes conexas: los grupos separados
+================================================================
+Grupo 1 (4): Drake, Eminem, Kendrick Lamar, Travis Scott
+Grupo 2 (3): Dua Lipa, Harry Styles, The Weeknd
+Grupo 3 (2): BLACKPINK, BTS
+Grupo 4 (2): Queen, Soda Stereo
+Grupo 5 (1): Mercedes Sosa
+
+Cada género forma un grupo donde todos se conocen entre sí; entre
+géneros distintos no hay camino... hasta que aparece un puente.
+
+================================================================
+7. Un artista en dos géneros hace de puente
+================================================================
+Se agrega 'Pray for Me' de The Weeknd, clasificada como rap.
+
+The Weeknd ahora: pop, rap | grado 6
+Harry Styles a Drake: Harry Styles -> The Weeknd -> Drake  (2 saltos)
+
+Artistas a 2 saltos de Harry Styles:
+  1 salto(s): Dua Lipa
+  1 salto(s): The Weeknd
+  2 salto(s): Drake
+  2 salto(s): Eminem
+  2 salto(s): Kendrick Lamar
+  2 salto(s): Travis Scott
+
+Grupos ahora: [7, 2, 2, 1] (antes: [4, 3, 2, 2, 1])
