@@ -27,47 +27,47 @@ class BST:
             nodo.izq = self._insertar(nodo.izq, clave)
         elif clave > nodo.clave:
             nodo.der = self._insertar(nodo.der, clave)
-        return nodo
+            return nodo
 
-    def altura(self):
-        return self._altura(self.raiz)
+def altura(self)>
+    return self._altura(self.raiz)
 
-    def _altura(self, nodo):
-        if nodo is None:
-            return 0
-        return 1 + max(self._altura(nodo.izq), self._altura(nodo.der))
+def _altura(self, nodo):
+    if nodo is None:
+        return 0
+    return 1 + max(self._altura(nod.izq), self._altura(nodo.der))
 
-    def buscar(self, clave):
-        """Devuelve (encontrrado, cantidad_de_comparacione)"""
-        return self._buscar(self.raiz, clave, 0)
+def buscar(self, clave):
+    """Devuelve (encontrrado, cantidad_de_comparacione)"""
+    return self._buscar(self.raiz, clave, 0)
 
-    def _buscar(self, nodo, clave, comparaciones):
-        if nodo is None:
-            return (False, comparaciones)
-        comparaciones += 1
-        if clave == nodo.clave:
-            return (True, comparaciones)
-        elif clave < nodo.clave:
-            return self._buscar(nodo.izq, clave, comparaciones)
-        else:
-            return self._buscar(nodo.der, clave, comparaciones)
+def _buscar(self, nodo, clave, comparaciones):
+    if nodo is None:
+        return (False, comparaciones)
+    comparaciones += 1
+    if clave == nodo.clave:
+        return (True, comparaciones)
+    elif clave < nodo.clave:
+        return self._buscar(nodo.izq, clave, comparaciones)
+    else:
+        return self._buscar(nodo.der, clave, comparaciones)
 
-    def imprimir(self):
-        """Imprime el arbol en formato ASCII"""
-        self._imprimir(self.raiz, "", True)
+def imprimir(self):
+    """Imprime el arbol en formato ASCII"""
+    self._imprimir(self.raiz, "", True)
 
-    def _imprimir(self, nodo, prefijo, es_ultimo):
-        if nodo is None:
-            return 
-        conector = "└── " if es_ultimo else "├── "
-        print(f"{prefijo}{conector}{nodo.clave}")
-        nuevo_prefijo = prefijo + ("    " if es_ultimo else "│   ")
-        hijos = []
-        if nodo.izq:
-            hijos.append(nodo.izq)
+def _imprimir(self, nodo, prefijo, es_ultimo):
+    if nodo is None:
+        return 
+    conector = "└── " if es_ultimo else "├── "
+    print(f"{prefijo}{conector}{nodo.clave}")
+    nuevo_prefijo = prefijo + ("    " if es_ultimo else "│   ")
+    hijos = []
+    if nodo.izq:
+        hijos.append(nodo.izq, False)
         if nodo.der:
-            hijos.append(nodo.der)
-        for i, hijo in enumerate(hijos):
+            hijos.append(nodo.der, True)
+        for i, (hijo, _) in enumerate(hijos):
             self._imprimir(hijo, nuevo_prefijo, i == len(hijos) - 1)
 
 
@@ -88,9 +88,6 @@ class AVL:
         self.raiz = None
 
     # --- Utilidades ---
-
-    def altura(self):
-        return self._altura(self.raiz)
 
     @staticmethod
     def _altura(nodo):

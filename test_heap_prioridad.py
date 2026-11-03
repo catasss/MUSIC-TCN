@@ -14,7 +14,7 @@ import unittest
 from heap_prioridad import ColaPrioridad
 from prioridad import CriterioPrioridad
 from modelos import Cancion
-from gestor_musica_v4 import CatalogoMusical
+from gestor_musica import CatalogoMusical
 
 CARPETA = os.path.dirname(os.path.abspath(__file__))
 
