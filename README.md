@@ -1,36 +1,39 @@
-# MUSICTCN — v5
+# MUSICTCN — v6
 
 Programa de terminal para explorar un catálogo de canciones: buscar por
 título/artista, buscar por título exacto y autocompletar (con un árbol
 binario de búsqueda), explorar el catálogo por categorías (con un árbol
 general), listar, filtrar por género/año/popularidad, obtener un ranking
 dinámico de recomendaciones (con una cola de prioridad) y explorar las
-conexiones entre artistas (con un grafo).
+conexiones entre artistas y sus recorridos (con un grafo y algoritmos BFS / DFS).
 
-Esta v5 incorpora el **Objetivo 7: grafos** —un grafo de artistas, hecho
-a mano con lista de adyacencia, que permite ver con quién se conecta un
-artista, encontrar el camino más corto entre dos artistas y detectar los
-grupos separados— sobre la base de la v4 (Objetivo 6: "Que el sistema
-elija primero", colas de prioridad), la v3 (Objetivo 5: "Organizá tu
-universo", árboles generales), la v2 (Objetivo 3: "Poné un árbol en tu
-sistema") y la v1 (Objetivo 1: "Construí el corazón del sistema").
+Esta v6 incorpora el **Objetivo 8: recorridos de grafos** —implementación de BFS
+y DFS para responder consultas reales de cercanía y exploración profunda sobre
+la red de artistas— sobre la base de la v5 (Objetivo 7: grafos y modelo de
+conexiones), la v4 (Objetivo 6: "Que el sistema elija primero", colas de
+prioridad), la v3 (Objetivo 5: "Organizá tu universo", árboles generales), la v2
+(Objetivo 3: "Poné un árbol en tu sistema") y la v1 (Objetivo 1: "Construí el
+corazón del sistema").
 
 ### Versiones y archivos de entrada
 
 | Versión | Programa | Gestor de datos | Qué suma |
 |---|---|---|---|
 | v4 | `main.py` | `gestor_musica.py` | hasta el ranking con heap (opciones 1 a 13) |
-| **v5** | **`main_v5.py`** | **`gestor_musica_v5.py`** | la v4 más el grafo de artistas (opción 14) |
+| v5 | `main_v5.py` | `gestor_musica_v5.py` | la v4 más el grafo de artistas (opción 14) |
+| **v6** | **`main_v6.py`** | **`gestor_musica_v6.py`** | la v5 más recorridos BFS y DFS para casos de uso reales |
 
-La v5 es la versión más reciente. La v4 se conserva sin cambios, y los
-módulos compartidos (`modelos.py`, los árboles, el heap, `prioridad.py`)
-sirven para las dos.
+La v6 es la versión más reciente. Las versiones anteriores se conservan sin
+cambios, y los módulos compartidos (`modelos.py`, los árboles, el heap,
+`prioridad.py`, `grafo.py`) sirven para todas.
 
 ## Estructura del proyecto
 
 ```
 musictcn/
-├── main_v5.py                         # Interfaz de terminal de la v5 (menú + submenú de conexiones)
+├── main_v6.py                         # Interfaz de terminal de la v6 (incluye recorridos TP 8)
+├── gestor_musica_v6.py                # CatalogoMusical de la v6: v5 más métodos de consulta BFS/DFS
+├── main_v5.py                         # Interfaz de terminal de la v5
 ├── gestor_musica_v5.py                # CatalogoMusical de la v5: la v4 más el grafo de artistas
 ├── main.py                            # Interfaz de terminal de la v4
 ├── modelos.py                          # Clases del dominio: Cancion, Artista, Genero
@@ -40,11 +43,13 @@ musictcn/
 ├── arbol_general.py                     # Árbol general (n-ario) de categorías - Objetivo 5
 ├── heap_prioridad.py                    # Cola de prioridad: heap binario máximo a mano - Objetivo 6
 ├── prioridad.py                         # Función de prioridad (popularidad, novedad, género)
-├── grafo.py                             # Grafo no dirigido y sin pesos, lista de adyacencia - Objetivo 7
+├── grafo.py                             # Grafo no dirigido y sin pesos, BFS y DFS a mano - Objetivo 7 y 8
 ├── modelo_grafo.md                      # Modelo del grafo: decisiones y justificación (Objetivo 7)
+├── analisis_complejidad_tp8.md          # Análisis de complejidad y casos de uso BFS/DFS (Objetivo 8)
 ├── test_arbol_canciones.py              # Pruebas unitarias del BST (14 tests)
 ├── test_arbol_general.py                # Pruebas del árbol general y su integración (25 tests)
 ├── test_heap_prioridad.py               # Pruebas del heap, la prioridad y el ranking (34 tests)
+├── test_recorridos.py                   # Pruebas unitarias de BFS y DFS en el grafo (Objetivo 8)
 ├── ejemplos_recorridos.py               # Recorridos y búsquedas sobre la jerarquía real
 ├── ejemplos_recorridos.txt              # Salida de ejemplos_recorridos.py
 ├── ejemplos_consultas_grafo.py          # Consultas de ejemplo sobre el grafo de artistas
@@ -102,25 +107,17 @@ musictcn/
   implementado a mano con lista de adyacencia (un diccionario
   `{vértice: [vecinos]}`) y sin librerías de grafos. Es genérico: sirve
   con cualquier valor hashable como vértice. Incluye vecinos y grado,
-  densidad, recorridos BFS y DFS, distancias en saltos, camino más corto
-  y componentes conexas.
-- **`gestor_musica.py`** (v4) y **`gestor_musica_v5.py`** (v5) son la
-  interfaz entre los datos crudos y el resto del programa: `CatalogoMusical` sabe cargar canciones desde JSON o CSV,
-  mantiene los árboles y los heaps sincronizados con los datos, y expone
-  las operaciones `buscar()`, `buscar_titulo_exacto()`, `autocompletar()`,
-  `listar()`, `listar_ordenado_por_titulo()` y `filtrar()`, las de
-  categorías (`canciones_de_categoria()`, `buscar_categoria()`,
-  `ruta_categoria_de()`, `dibujar_categorias()`), las de ranking
-  (`ranking()`, `agregar_cancion()`), además de utilidades (`top_n()`,
-  `generos_disponibles()`). La v5 agrega, sobre el grafo, las operaciones
-  `artistas_relacionados()`, `camino_entre_artistas()`,
-  `artistas_a_n_saltos()`, `grupos_de_artistas()`, `buscar_artista()` y
-  `generos_de_artista()`, y reconstruye el grafo cada vez que cambian los
-  datos.
-- **`main.py`** solo se encarga de la interfaz de terminal (menú, `input()`,
-  `print()`); nunca lee archivos ni conoce el árbol directamente —esa
-  responsabilidad es de `gestor_musica.py`. Así los módulos quedan
-  desacoplados.
+  densidad, recorridos BFS (con cola) y DFS (con pila), distancias en saltos,
+  camino más corto y componentes conexas.
+- **`gestor_musica.py`** (v4), **`gestor_musica_v5.py`** (v5) y
+  **`gestor_musica_v6.py`** (v6) son la interfaz entre los datos crudos y el resto
+  del programa: `CatalogoMusical` sabe cargar canciones desde JSON o CSV,
+  mantiene los árboles, los heaps y el grafo sincronizados con los datos. La v6
+  agrega las consultas basadas en recorridos reales (`consultar_artista_mas_cercano_bfs`
+  y `explorar_comunidad_profundidad_dfs`).
+- **`main.py`** (y sus versiones v5 y v6) solo se encarga de la interfaz de terminal
+  (menú, `input()`, `print()`); nunca lee archivos ni conoce los árboles o grafos
+  directamente —esa responsabilidad es del gestor. Así los módulos quedan desacoplados.
 
 ## Requisitos
 
@@ -130,8 +127,9 @@ musictcn/
 
 ```bash
 cd musictcn
-python3 main_v5.py     # v5, la más reciente (con el grafo de artistas)
-python3 main.py        # v4 (sin el grafo)
+python3 main_v6.py     # v6, la más reciente (con recorridos BFS y DFS para TP 8)
+python3 main_v5.py     # v5 (con grafo de artistas)
+python3 main.py        # v4 (hasta ranking con heap)
 ```
 
 Vas a ver un menú como este:
@@ -154,16 +152,15 @@ Vas a ver un menú como este:
 12. Ranking de recomendaciones (heap)
 13. Agregar canción (el ranking se actualiza)
 14. Explorar conexiones entre artistas (grafo)
-15. Recomendaciones personalizadas por perfil (próximamente)
+15. Explorar la red con BFS / DFS (TP 8)
+16. Recomendaciones personalizadas por perfil (próximamente)
 0. Salir
 ----------------------------------------
 ```
 
-Elegí una opción escribiendo el número y presionando Enter. (El menú de
-arriba es el de `main_v5.py`; el de `main.py` es igual, salvo que la
-opción 14 figura como "próximamente".)
+Elegí una opción escribiendo el número y presionando Enter.
 
-## Operaciones implementadas en v5
+## Operaciones implementadas en v6
 
 | # | Operación | Estrategia | Descripción |
 |---|-----------|-----------|-------------|
@@ -179,17 +176,9 @@ opción 14 figura como "próximamente".)
 | 10 | Jerarquía completa | Árbol general | Árbol dibujado, preorden, postorden o por niveles |
 | 11 | Buscar categoría | Árbol general | Búsqueda parcial de género, familia o artista, con su ruta y canciones |
 | 12 | Ranking de recomendaciones | Heap | Top-N según un criterio ajustable (popularidad, novedad, género preferido) |
-| 13 | Agregar canción | Heap + BST + grafo | Inserta la canción en O(log n); el ranking y el grafo de artistas se actualizan al instante |
-| 14 | Conexiones entre artistas | Grafo | Submenú: ver el grafo, conexiones de un artista, camino más corto, artistas a N saltos y grupos separados |
-
-Además, la opción **2** (título exacto) ahora muestra la categoría de la
-canción (ej: `Música > Pop y derivados > K-pop > BTS`).
-
-La opción **15** (recomendaciones personalizadas por perfil) queda
-planteada en el menú pero marcada como "próximamente": requiere una clase
-`Usuario` que todavía no forma parte del dominio. Las canciones agregadas
-con la opción 13 viven solo en memoria: no se guardan en los archivos de
-datos.
+| 13 | Agregar canción | Heap + BST + grafo | Inserta la canción en O(log n); el ranking y el grafo se actualizan al instante |
+| 14 | Conexiones entre artistas | Grafo | Submenú: ver el grafo, conexiones, camino más corto, saltos y grupos |
+| 15 | Explorar la red (TP 8) | Grafo (BFS / DFS) | Consultas reales: artista más cercano (BFS) y exploración en profundidad (DFS) |
 
 ## Objetivo 2: complejidad — ¿Qué tan rápido es?
 
@@ -302,243 +291,84 @@ Música (15)
     └── Folk (1) ...
 ```
 
-(entre paréntesis, la cantidad de canciones de cada categoría)
-
 Los niveles de familia y género salen de **`datos/categorias.json`**; los
 nodos de **artista se generan a partir del catálogo cargado**, así que si
-cambian las canciones, la jerarquía se reconstruye sola. Un género que la
-taxonomía no conoce se ubica bajo un nodo "Otros" en vez de perderse.
-
-### Búsquedas y recorridos
-
-| Operación | Método | Complejidad |
-|---|---|---|
-| Buscar por nombre (exacto o parcial) | `buscar()`, `buscar_parcial()` | O(n) — los hermanos no están ordenados |
-| Ruta desde la raíz | `ruta(nodo)` | O(h), h = altura |
-| Preorden (padre → hijos) | `preorden()` | O(n) — mostrar la jerarquía de arriba hacia abajo |
-| Postorden (hijos → padre) | `postorden()` | O(n) — valores del padre que dependen de los hijos |
-| Por niveles (anchura) | `por_niveles()` | O(n) — todas las categorías de un mismo nivel |
-
-Ejemplos de cada recorrido sobre la jerarquía real: **`ejemplos_recorridos.txt`**.
-
-### Cómo se integra a la app
-
-- Opción **9, Explorar categorías**: se navega eligiendo subcategorías;
-  en cada nivel se ven la ruta (`Música > Pop y derivados > K-pop`), las
-  subcategorías con su cantidad de canciones y las canciones de esa
-  categoría ordenadas por popularidad.
-- Opción **10**: la jerarquía completa con el recorrido a elección.
-- Opción **11**: búsqueda de una categoría por nombre.
-- Una familia agrupa las canciones de todos sus géneros; un artista, solo
-  las suyas.
+cambian las canciones, la jerarquía se reconstruye sola.
 
 ```bash
 python3 -m unittest test_arbol_general.py test_arbol_canciones.py   # 39 pruebas
 python3 ejemplos_recorridos.py                                       # recorridos de ejemplo
-python3 main.py                                                      # la app (opciones 9, 10 y 11)
 ```
 
 ## Objetivo 6: colas de prioridad — Que el sistema elija primero
 
-### Función de prioridad
-
-La prioridad de una canción combina tres factores ajustables:
-
-```
-base      = (peso_popularidad * popularidad + peso_novedad * novedad)
-            / (peso_popularidad + peso_novedad)
-prioridad = base + bono_genero        (solo si el género es el preferido)
-```
-
-La *novedad* es el año llevado a una escala de 0 (1960) a 100 (2026) y el
-bono de género es de +10 puntos (por eso la prioridad puede superar 100).
-Hay tres criterios listos —popularidad, equilibrado (70/30) y novedades
-(30/70)— y cada uno admite un género preferido. Ejemplo real:
-
-```
-TOP 5  (popularidad 70% / novedad 30%, +10 a 'k-pop')
- 1. Dynamite - BTS                              103.8
- 2. How You Like That - BLACKPINK               100.3
- 3. Boy With Luv - BTS                           98.4
- 4. Kill This Love - BLACKPINK                   97.7
- 5. Blinding Lights - The Weeknd                 95.2
-```
-
 ### El heap
 
-`ColaPrioridad` es un heap binario máximo escrito a mano sobre una lista:
-el hijo izquierdo de la posición `i` está en `2i+1`, el derecho en `2i+2`
-y el padre en `(i-1)//2`. La raíz es siempre el mejor elemento.
-
-| Operación | Costo |
-|---|---|
-| `ver_maximo()` | O(1) |
-| `insertar()` | O(log n) |
-| `extraer_maximo()` | O(log n) |
-| `desde_lista()` (construcción de Floyd) | O(n) |
-| `mejores(N)` (Top-N, sin modificar el heap) | O(N log N) |
-
-### Cómo se integra a la app
-
-- Opción **12, Ranking de recomendaciones**: se elige el criterio, el
-  género preferido y cuántas canciones ver.
-- Opción **13, Agregar canción**: la canción entra en cada heap ya
-  construido en O(log n), y el ranking cambia al instante.
-- Opción **5** (top 10 populares) también usa el heap en vez de ordenar
-  todo el catálogo.
-- Cada criterio construye su heap la primera vez que se usa y lo guarda.
-
-### ¿Por qué un heap y no ordenar todo cada vez?
-
-Porque solo se necesita el Top-N y no el orden total, y porque el ranking
-cambia: cada canción nueva obliga a reordenar todo desde cero (O(n log n)),
-mientras que al heap le cuesta O(log n). Resultados medidos con 100.000
-canciones y Top-10:
-
-| Escenario | Ordenar todo | Heap |
-|---|---:|---:|
-| Comparaciones (consulta única) | 1.528.975 | 187.973 al construir + 55 por Top-10 |
-| Ranking dinámico (canción nueva + Top-10) | 85,48 ms | 0,0235 ms (**3.641x**) |
-
-En una consulta única sobre datos que no cambian, `sorted()` gana en
-tiempo (está escrito en C y este heap en Python puro): ahí ordenar es
-razonable. La justificación completa, con todas las tablas y la
-conclusión técnica, está en **`comparacion_heap_vs_sort.md`**.
+`ColaPrioridad` es un heap binario máximo escrito a mano sobre una lista.
+Permite construir el ranking en O(n) y consultar Top-N en O(N log N) sin
+reordenar el catálogo completo.
 
 ```bash
 python3 -m unittest test_heap_prioridad.py -v   # 34 pruebas del heap y el ranking
 python3 comparacion_heap_vs_sort.py             # experimento heap vs ordenar todo
-python3 main.py                                 # la app (opciones 12 y 13)
 ```
 
 ## Objetivo 7: grafos — el grafo de artistas
 
-El detalle completo de las decisiones está en **`modelo_grafo.md`**; acá
-va el resumen.
+El detalle de diseño del grafo no dirigido implementado con lista de adyacencia
+está en **`modelo_grafo.md`**.
 
-### El modelo
+## Objetivo 8: recorridos de grafos (BFS y DFS) — Explorá la red
 
-| Decisión | Elección | Por qué |
-|---|---|---|
-| Vértice | un **artista** | es lo que de forma natural "se conecta" con otros; con canciones como vértices casi todo quedaría unido por tener el mismo artista o género |
-| Arista | dos artistas **comparten género** | es la relación más simple que se calcula con los datos que ya tiene el catálogo; un artista con canciones en dos géneros hace de **puente** entre ellos |
-| Tipo | **no dirigido y sin pesos** | "A comparte género con B" implica "B con A"; o se comparte género o no, no hay grados que medir (por eso el camino más corto usa BFS y no hace falta Dijkstra) |
-| Representación | **lista de adyacencia** | el grafo es ralo; ocupa O(V + E) en vez de O(V²) |
+En la **versión 6** se implementan y analizan formalmente los algoritmos de
+recorrido **BFS** (Breadth-First Search) y **DFS** (Depth-First Search) sobre el
+grafo de artistas, respondiendo a las consignas del TP 8.
 
-El grafo se arma agrupando los artistas por género y conectando entre sí a
-todos los de un mismo grupo, y se reconstruye solo cada vez que cambian
-los datos.
+### Casos de uso reales definidos
 
-### ¿Por qué lista de adyacencia y no matriz?
+1. **Caso de uso BFS: Artista relacionado más cercano**
+   - **Consulta:** *"¿Cuál es el artista relacionado más cercano a X?"*
+   - **Algoritmo:** **BFS** (utilizando una **Cola / FIFO**).
+   - **Por qué conviene:** BFS explora radialmente nivel por nivel. En grafos no
+     pesados, garantiza encontrar el camino o nodo destino con la menor cantidad
+     de saltos (aristas).
 
-| | Lista de adyacencia | Matriz de adyacencia |
-|---|---|---|
-| Memoria | O(V + E) | O(V²) |
-| ¿Están conectados A y B? | O(grado) | O(1) |
-| Vecinos de A | O(grado) | O(V) |
-| Recorrer todo el grafo (BFS/DFS) | O(V + E) | O(V²) |
+2. **Caso de uso DFS: Exploración exhaustiva de comunidad musical**
+   - **Consulta:** *"Explorá todas las relaciones del artista X en profundidad"*.
+   - **Algoritmo:** **DFS** (utilizando una **Pila / LIFO**).
+   - **Por qué conviene:** DFS sigue una rama de conexiones tan lejos como sea
+     posible antes de hacer *backtracking*, lo que permite recorrer exhaustivamente
+     toda una componente conexa o comunidad de influencias.
 
-Con los datos actuales hay 12 artistas y 11 conexiones de 66 posibles:
-densidad de **17%**. Una matriz tendría 144 celdas y solo 22 con una
-conexión. En un catálogo grande la densidad es aún menor (unos 5% con 20
-géneros repartidos parejo), así que la lista ocupa mucho menos y recorre
-más rápido. Lo único que la matriz haría mejor, saber en O(1) si dos
-artistas están conectados, es una consulta que la app casi no usa.
+### Análisis de complejidad
 
-### Consultas que soporta
+| Algoritmo | Complejidad Temporal | Complejidad Espacial | Estructura Principal |
+|---|:---:|:---:|---|
+| **BFS** | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | Cola (FIFO) + Visitados |
+| **DFS** | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | Pila (LIFO) + Visitados |
 
-| Consulta | Algoritmo | Costo |
-|---|---|---|
-| Vecinos y grado de un artista | lectura de la lista | O(grado) |
-| Camino más corto entre dos artistas | BFS con padres | O(V + E) |
-| Artistas a N saltos | BFS con tope de distancia | O(V + E) |
-| Grupos de artistas separados | componentes conexas (BFS) | O(V + E) |
-| Recorridos | BFS y DFS | O(V + E) |
+*Donde $V$ es el número de vértices (artistas) y $E$ es el número de aristas (géneros compartidos).*
 
-### Cómo se integra a la app
-
-La opción **14, Explorar conexiones entre artistas** abre un submenú:
-
-```
---- Conexiones entre artistas ---
-(dos artistas están conectados si comparten género)
-1. Ver el grafo completo
-2. Ver con quién se conecta un artista
-3. Camino más corto entre dos artistas
-4. Artistas a N saltos de un artista
-5. Ver los grupos de artistas separados
-0. Volver al menú principal
-```
-
-Los nombres de artista se pueden escribir sin respetar mayúsculas o de
-forma parcial (si la coincidencia es única). Con el catálogo de prueba, el
-grafo tiene **5 grupos separados**: uno por género (rap con 4 artistas, pop
-con 3, k-pop con 2, rock con 2 y folk con 1). Por eso, por ejemplo, no hay
-camino entre Drake y BTS.
-
-### Un artista en dos géneros hace de puente
-
-Esto muestra que el grafo se mantiene solo. Con la opción **13** se agrega
-"Pray for Me" de The Weeknd, clasificada como rap: The Weeknd pasa a estar
-en dos géneros, conecta dos grupos y los grupos pasan de `[4, 3, 2, 2, 1]` a
-`[7, 2, 2, 1]`. Entonces Harry Styles, que antes no tenía forma de llegar a
-Drake, queda a 2 saltos:
-
-```
-Camino más corto (2 salto(s)):
-  Harry Styles -> The Weeknd -> Drake
-```
-
-Las consultas completas, con su salida real, están en
-**`ejemplos_consultas_grafo.txt`** (lo genera `ejemplos_consultas_grafo.py`)
-y una sesión de la app en **`demo_v5.txt`**.
+Toda la documentación teórica detallada se encuentra en **`analisis_complejidad_tp8.md`**.
 
 ```bash
-python3 ejemplos_consultas_grafo.py    # consultas de ejemplo sobre el grafo
-python3 main_v5.py                     # la app (opción 14)
+python3 -m unittest test_recorridos.py -v   # Pruebas unitarias de BFS y DFS (TP 8)
+python3 main_v6.py                           # Ejecución interactiva de la v6
 ```
-
-### Limitaciones
-
-- Como cada género es un grupo donde todos se conectan, dentro de un
-  género los caminos son siempre de 1 salto; las distancias mayores solo
-  aparecen cuando un artista actúa de puente entre géneros.
-- Una versión más rica podría agregar colaboraciones reales entre artistas
-  (con un archivo de datos nuevo) y pesos que midan qué tan cerca están
-  dos artistas; en ese caso el camino mínimo pasaría a requerir Dijkstra
-  con la cola de prioridad del Objetivo 6.
 
 ## Datos de prueba
 
 `datos/canciones.json` contiene 15 canciones de ejemplo cubriendo los
-géneros k-pop, rap, rock, pop y folk, con año y popularidad variados para
-poder probar todas las operaciones (incluyendo casos sin resultados).
-`datos/categorias.json` define la jerarquía de familias y géneros.
-`datos/canciones.csv` tiene la misma información en CSV, y
-`CatalogoMusical.cargar_desde_csv()` permite usarla en lugar del JSON si
-se prefiere (basta con cambiar `RUTA_DATOS` en `main_v5.py`).
+géneros k-pop, rap, rock, pop y folk. `datos/categorias.json` define la
+jerarquía de familias y géneros.
 
 ## Demos
 
-Transcripciones de sesiones reales de la app, una por versión:
-`demo_v1.txt` (buscar, explorar género, top 10), `demo_v2.txt` (búsqueda
-exacta, autocompletado y listado por inorder), `demo_v3.txt`
-(jerarquía completa, buscar categoría y explorar categorías) y
-`demo_v4.txt` (ranking con distintos criterios, agregar una canción y ver
-cómo el ranking se actualiza) y `demo_v5.txt` (el grafo de artistas, el
-camino entre dos artistas, y cómo agregar una canción conecta dos grupos).
+Transcripciones de sesiones reales de la app: `demo_v1.txt`, `demo_v2.txt`,
+`demo_v3.txt`, `demo_v4.txt` y `demo_v5.txt`.
 
-## Próximos pasos (fuera del alcance de v5)
+## Próximos pasos (fuera del alcance de v6)
 
-- Clase `Usuario` con gustos/historial para recomendaciones personalizadas
-  (opción 15).
-- Colaboraciones reales entre artistas y pesos en el grafo, con el camino
-  mínimo calculado por Dijkstra usando el heap del Objetivo 6.
-- Pruebas unitarias del grafo (`grafo.py` todavía no tiene un archivo de
-  tests propio, a diferencia de los árboles y el heap).
-- Integrar el AVL (`arbol_avl.py`) como reemplazo del BST en
-  `CatalogoMusical`, para garantizar O(log n) incluso ante inserciones
-  adversariales, no solo en el caso promedio.
-- Persistencia de las canciones agregadas (hoy viven solo en memoria).
-- Un heap que actualice la prioridad de una canción ya insertada (por
-  ejemplo, cuando cambia su popularidad) sin reconstruirlo.
+- Clase `Usuario` con gustos/historial para recomendaciones personalizadas (opción 16).
+- Pesos reales en las aristas del grafo y camino mínimo ponderado con Dijkstra.
+- Persistencia de canciones agregadas.
