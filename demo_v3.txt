@@ -1,0 +1,200 @@
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Explorar conexiones entre artistas (próximamente)
+11. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: 9
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 1
+
+Música (15)
+├── Pop y derivados (7)
+│   ├── Pop (3)
+│   │   ├── Dua Lipa (1)
+│   │   ├── Harry Styles (1)
+│   │   └── The Weeknd (1)
+│   └── K-pop (4)
+│       ├── BLACKPINK (2)
+│       └── BTS (2)
+├── Rock y alternativo (3)
+│   └── Rock (3)
+│       ├── Queen (1)
+│       └── Soda Stereo (2)
+├── Hip hop y urbano (4)
+│   └── Rap (4)
+│       ├── Drake (1)
+│       ├── Eminem (1)
+│       ├── Kendrick Lamar (1)
+│       └── Travis Scott (1)
+└── Folklore y raíces (1)
+    └── Folk (1)
+        └── Mercedes Sosa (1)
+
+22 nodos, 4 niveles, 12 hojas.
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 2
+
+Estás en: Música
+15 canción(es) en esta categoría.
+Subcategorías:
+  1. Pop y derivados (7)
+  2. Rock y alternativo (3)
+  3. Hip hop y urbano (4)
+  4. Folklore y raíces (1)
+[número = entrar | c = ver sus canciones | 0 = salir]: 1
+
+Estás en: Música > Pop y derivados
+7 canción(es) en esta categoría.
+Subcategorías:
+  1. Pop (3)
+  2. K-pop (4)
+[número = entrar | c = ver sus canciones | u = subir | 0 = salir]: 2
+
+Estás en: Música > Pop y derivados > K-pop
+4 canción(es) en esta categoría.
+Subcategorías:
+  1. BLACKPINK (2)
+  2. BTS (2)
+[número = entrar | c = ver sus canciones | u = subir | 0 = salir]: 2
+
+Estás en: Música > Pop y derivados > K-pop > BTS
+2 canción(es) en esta categoría.
+(No tiene subcategorías.)
+[1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+[u = subir | 0 = salir]: u
+
+Estás en: Música > Pop y derivados > K-pop
+4 canción(es) en esta categoría.
+Subcategorías:
+  1. BLACKPINK (2)
+  2. BTS (2)
+[número = entrar | c = ver sus canciones | u = subir | 0 = salir]: u
+
+Estás en: Música > Pop y derivados
+7 canción(es) en esta categoría.
+Subcategorías:
+  1. Pop (3)
+  2. K-pop (4)
+[número = entrar | c = ver sus canciones | u = subir | 0 = salir]: 0
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 4
+Recorrido: 1) preorden  2) postorden  3) por niveles
+Elegí una opción: 2
+Desde qué categoría (Enter = Música): Pop y derivados
+
+POSTORDEN (los hijos antes que el padre; así se calcula la cantidad de canciones por categoría):
+  1.         Dua Lipa (1)
+  2.         Harry Styles (1)
+  3.         The Weeknd (1)
+  4.     Pop (3)
+  5.         BLACKPINK (2)
+  6.         BTS (2)
+  7.     K-pop (4)
+  8. Pop y derivados (7)
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 4
+Recorrido: 1) preorden  2) postorden  3) por niveles
+Elegí una opción: 3
+Desde qué categoría (Enter = Música): 
+
+POR NIVELES (de a un nivel a la vez, en anchura):
+  Nivel 0: Música
+  Nivel 1: Pop y derivados, Rock y alternativo, Hip hop y urbano, Folklore y raíces
+  Nivel 2: Pop, K-pop, Rock, Rap, Folk
+  Nivel 3: Dua Lipa, Harry Styles, The Weeknd, BLACKPINK, BTS, Queen, Soda Stereo, Drake, Eminem, Kendrick Lamar, Travis Scott, Mercedes Sosa
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 3
+Nombre (o parte del nombre) de la categoría: pop
+Se encontraron 3 categoría(s):
+  1. Música > Pop y derivados (7 canciones)
+  2. Música > Pop y derivados > Pop (3 canciones)
+  3. Música > Pop y derivados > K-pop (4 canciones)
+Número para explorarla (Enter para volver): 
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 5
+Título de la canción: Dynamite
+[1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+Ruta en el árbol: Música > Pop y derivados > K-pop > BTS
+
+--- Explorar categorías ---
+1. Ver el árbol completo (con cantidad de canciones)
+2. Navegar por las categorías (entrar y salir de las ramas)
+3. Buscar una categoría por nombre
+4. Ver un recorrido del árbol (preorden, postorden, por niveles)
+5. Ver en qué rama del árbol está una canción
+0. Volver al menú principal
+Elegí una opción: 0
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Explorar conexiones entre artistas (próximamente)
+11. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: 0
+¡Hasta la próxima!

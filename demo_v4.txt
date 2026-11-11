@@ -1,0 +1,171 @@
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Criterio del ranking:
+  1) Popularidad
+  2) Equilibrado (70% popularidad, 30% novedad)
+  3) Novedades (30% popularidad, 70% novedad)
+Elegí un criterio (Enter = 1): Género preferido, recibe +10 puntos (Enter para omitir): ¿Cuántas canciones querés ver? (Enter = 5): 
+TOP 5  (popularidad 100% / novedad 0%)
+ 1. Bohemian Rhapsody - Queen                    99.0
+ 2. Lose Yourself - Eminem                       98.0
+ 3. Blinding Lights - The Weeknd                 97.0
+ 4. God's Plan - Drake                           96.0
+ 5. Dynamite - BTS                               95.0
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Criterio del ranking:
+  1) Popularidad
+  2) Equilibrado (70% popularidad, 30% novedad)
+  3) Novedades (30% popularidad, 70% novedad)
+Elegí un criterio (Enter = 1): Género preferido, recibe +10 puntos (Enter para omitir): ¿Cuántas canciones querés ver? (Enter = 5): 
+TOP 5  (popularidad 70% / novedad 30%, +10 a 'k-pop')
+ 1. Dynamite - BTS                              103.8
+ 2. How You Like That - BLACKPINK               100.3
+ 3. Boy With Luv - BTS                           98.4
+ 4. Kill This Love - BLACKPINK                   97.7
+ 5. Blinding Lights - The Weeknd                 95.2
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Título: Artista: Género (ej: pop, rock, rap, k-pop, folk): Año (1900-2100): Popularidad (0-100): Canción agregada con id 16. El ranking ya la tiene en cuenta.
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Criterio del ranking:
+  1) Popularidad
+  2) Equilibrado (70% popularidad, 30% novedad)
+  3) Novedades (30% popularidad, 70% novedad)
+Elegí un criterio (Enter = 1): Género preferido, recibe +10 puntos (Enter para omitir): ¿Cuántas canciones querés ver? (Enter = 5): 
+TOP 5  (popularidad 100% / novedad 0%)
+ 1. Nueva Cumbre - Artista Nuevo                100.0
+ 2. Bohemian Rhapsody - Queen                    99.0
+ 3. Lose Yourself - Eminem                       98.0
+ 4. Blinding Lights - The Weeknd                 97.0
+ 5. God's Plan - Drake                           96.0
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: [16] Nueva Cumbre - Artista Nuevo (pop) - Año: 2026 - Popularidad: 100
+[7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+[2] Lose Yourself - Eminem (rap) - Año: 2002 - Popularidad: 98
+[4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[10] God's Plan - Drake (rap) - Año: 2018 - Popularidad: 96
+[1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[14] HUMBLE. - Kendrick Lamar (rap) - Año: 2017 - Popularidad: 94
+[6] Sicko Mode - Travis Scott (rap) - Año: 2018 - Popularidad: 93
+[3] De Música Ligera - Soda Stereo (rock) - Año: 1990 - Popularidad: 92
+[8] Levitating - Dua Lipa (pop) - Año: 2020 - Popularidad: 91
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: ¡Hasta la próxima!

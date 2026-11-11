@@ -1,0 +1,86 @@
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista
+2. Explorar géneros (k-pop, rap, rock, pop, ...)
+3. Ver top 10 de canciones populares
+4. Listar todo el catálogo
+5. Filtrar canciones
+6. Explorar conexiones entre artistas (próximamente)
+7. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Buscar (título o artista): [1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista
+2. Explorar géneros (k-pop, rap, rock, pop, ...)
+3. Ver top 10 de canciones populares
+4. Listar todo el catálogo
+5. Filtrar canciones
+6. Explorar conexiones entre artistas (próximamente)
+7. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Géneros disponibles: folk, k-pop, pop, rap, rock
+¿Qué género querés explorar? [1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[5] How You Like That - BLACKPINK (k-pop) - Año: 2020 - Popularidad: 90
+[9] Boy With Luv - BTS (k-pop) - Año: 2019 - Popularidad: 88
+[13] Kill This Love - BLACKPINK (k-pop) - Año: 2019 - Popularidad: 87
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista
+2. Explorar géneros (k-pop, rap, rock, pop, ...)
+3. Ver top 10 de canciones populares
+4. Listar todo el catálogo
+5. Filtrar canciones
+6. Explorar conexiones entre artistas (próximamente)
+7. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: [7] Bohemian Rhapsody - Queen (rock) - Año: 1975 - Popularidad: 99
+[2] Lose Yourself - Eminem (rap) - Año: 2002 - Popularidad: 98
+[4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[10] God's Plan - Drake (rap) - Año: 2018 - Popularidad: 96
+[1] Dynamite - BTS (k-pop) - Año: 2020 - Popularidad: 95
+[14] HUMBLE. - Kendrick Lamar (rap) - Año: 2017 - Popularidad: 94
+[6] Sicko Mode - Travis Scott (rap) - Año: 2018 - Popularidad: 93
+[3] De Música Ligera - Soda Stereo (rock) - Año: 1990 - Popularidad: 92
+[8] Levitating - Dua Lipa (pop) - Año: 2020 - Popularidad: 91
+[5] How You Like That - BLACKPINK (k-pop) - Año: 2020 - Popularidad: 90
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista
+2. Explorar géneros (k-pop, rap, rock, pop, ...)
+3. Ver top 10 de canciones populares
+4. Listar todo el catálogo
+5. Filtrar canciones
+6. Explorar conexiones entre artistas (próximamente)
+7. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Género (Enter para omitir): Año mínimo (Enter para omitir): Año máximo (Enter para omitir): Popularidad mínima (Enter para omitir): [4] Blinding Lights - The Weeknd (pop) - Año: 2020 - Popularidad: 97
+[8] Levitating - Dua Lipa (pop) - Año: 2020 - Popularidad: 91
+[15] Watermelon Sugar - Harry Styles (pop) - Año: 2019 - Popularidad: 90
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista
+2. Explorar géneros (k-pop, rap, rock, pop, ...)
+3. Ver top 10 de canciones populares
+4. Listar todo el catálogo
+5. Filtrar canciones
+6. Explorar conexiones entre artistas (próximamente)
+7. Obtener recomendaciones personalizadas (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: ¡Hasta la próxima!
