@@ -1,0 +1,17 @@
+[
+  {"id": 1, "titulo": "Dynamite", "artista": "BTS", "genero": "k-pop", "anio": 2020, "popularidad": 95},
+  {"id": 2, "titulo": "Lose Yourself", "artista": "Eminem", "genero": "rap", "anio": 2002, "popularidad": 98},
+  {"id": 3, "titulo": "De Música Ligera", "artista": "Soda Stereo", "genero": "rock", "anio": 1990, "popularidad": 92},
+  {"id": 4, "titulo": "Blinding Lights", "artista": "The Weeknd", "genero": "pop", "anio": 2020, "popularidad": 97},
+  {"id": 5, "titulo": "How You Like That", "artista": "BLACKPINK", "genero": "k-pop", "anio": 2020, "popularidad": 90},
+  {"id": 6, "titulo": "Sicko Mode", "artista": "Travis Scott", "genero": "rap", "anio": 2018, "popularidad": 93},
+  {"id": 7, "titulo": "Bohemian Rhapsody", "artista": "Queen", "genero": "rock", "anio": 1975, "popularidad": 99},
+  {"id": 8, "titulo": "Levitating", "artista": "Dua Lipa", "genero": "pop", "anio": 2020, "popularidad": 91},
+  {"id": 9, "titulo": "Boy With Luv", "artista": "BTS", "genero": "k-pop", "anio": 2019, "popularidad": 88},
+  {"id": 10, "titulo": "God's Plan", "artista": "Drake", "genero": "rap", "anio": 2018, "popularidad": 96},
+  {"id": 11, "titulo": "Zamba de mi Esperanza", "artista": "Mercedes Sosa", "genero": "folk", "anio": 1965, "popularidad": 80},
+  {"id": 12, "titulo": "Persiana Americana", "artista": "Soda Stereo", "genero": "rock", "anio": 1986, "popularidad": 89},
+  {"id": 13, "titulo": "Kill This Love", "artista": "BLACKPINK", "genero": "k-pop", "anio": 2019, "popularidad": 87},
+  {"id": 14, "titulo": "HUMBLE.", "artista": "Kendrick Lamar", "genero": "rap", "anio": 2017, "popularidad": 94},
+  {"id": 15, "titulo": "Watermelon Sugar", "artista": "Harry Styles", "genero": "pop", "anio": 2019, "popularidad": 90}
+]
