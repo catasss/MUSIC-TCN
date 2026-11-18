@@ -1,0 +1,125 @@
+
+================================================================
+1. El grafo del catálogo real (vértice = artista, arista = mismo género)
+================================================================
+BLACKPINK -> BTS
+BTS -> BLACKPINK
+Drake -> Eminem, Kendrick Lamar, Travis Scott
+Dua Lipa -> Harry Styles, The Weeknd
+Eminem -> Drake, Kendrick Lamar, Travis Scott
+Harry Styles -> Dua Lipa, The Weeknd
+Kendrick Lamar -> Drake, Eminem, Travis Scott
+Mercedes Sosa -> (sin conexiones)
+Queen -> Soda Stereo
+Soda Stereo -> Queen
+The Weeknd -> Dua Lipa, Harry Styles
+Travis Scott -> Drake, Eminem, Kendrick Lamar
+
+12 artistas, 11 aristas, 5 grupos sin conexión entre sí:
+  Grupo 1: Drake, Eminem, Kendrick Lamar, Travis Scott
+  Grupo 2: Dua Lipa, Harry Styles, The Weeknd
+  Grupo 3: BLACKPINK, BTS
+  Grupo 4: Queen, Soda Stereo
+  Grupo 5: Mercedes Sosa
+Con estos datos no hay artistas puente (ninguno canta en dos géneros),
+así que cada recorrido se queda dentro de un solo género.
+
+================================================================
+2. BFS vs DFS desde Eminem (grupo de rap: 4 artistas todos conectados entre sí)
+================================================================
+BFS (anchura)     : Eminem [0] -> Travis Scott [1] -> Drake [1] -> Kendrick Lamar [1]
+DFS (profundidad) : Eminem [0] -> Travis Scott [1] -> Drake [2] -> Kendrick Lamar [3]
+
+Entre corchetes: en BFS, saltos desde Eminem (distancia mínima); en DFS,
+profundidad del camino que siguió. Los cuatro están a 1 salto de Eminem,
+pero el DFS se mete por Travis Scott -> Drake -> Kendrick y llega a
+profundidad 3: el número del DFS NO es la distancia.
+
+================================================================
+3. Agregamos canciones que hacen de puente entre géneros (solo en memoria)
+================================================================
+  + One Dance - Drake (pop)
+  + Ice Cream - BLACKPINK (pop)
+  + Kiwi - Harry Styles (rock)
+
+Ahora hay 2 grupos:
+  Grupo 1 (11): BLACKPINK, BTS, Drake, Dua Lipa, Eminem, Harry Styles, Kendrick Lamar, Queen, Soda Stereo, The Weeknd, Travis Scott
+  Grupo 2 (1): Mercedes Sosa
+Drake (rap y pop), BLACKPINK (k-pop y pop) y Harry Styles (pop y rock) conectan los géneros.
+
+================================================================
+4. CASO DE USO BFS: ¿cuál es el artista de otro género más cercano?
+================================================================
+Pregunta: 'me gusta X y quiero descubrir el género G; ¿por quién empiezo?'
+Por qué BFS: explora por cantidad de saltos y corta en el primero que cumple,
+así que el artista encontrado es de los más cercanos y la cadena es corta.
+
+Eminem -> k-pop: BLACKPINK, a 2 salto(s)
+    Eminem -> Drake -> BLACKPINK
+Soda Stereo -> k-pop: BLACKPINK, a 2 salto(s)
+    Soda Stereo -> Harry Styles -> BLACKPINK
+Queen -> rap: Drake, a 2 salto(s)
+    Queen -> Harry Styles -> Drake
+Eminem -> rock: Harry Styles, a 2 salto(s)
+    Eminem -> Drake -> Harry Styles
+Mercedes Sosa -> rap: ninguno alcanzable (grupos separados)
+
+Niveles del BFS desde Eminem (de ahí sale la respuesta):
+  0 salto(s): Eminem (rap)
+  1 salto(s): Travis Scott (rap), Drake (pop, rap), Kendrick Lamar (rap)
+  2 salto(s): The Weeknd (pop), Dua Lipa (pop), Harry Styles (pop, rock), BLACKPINK (k-pop, pop)
+  3 salto(s): Soda Stereo (rock), Queen (rock), BTS (k-pop)
+
+================================================================
+5. CASO DE USO DFS: explorar toda la red de un artista en profundidad
+================================================================
+Pregunta: 'mostrame todo lo que se puede descubrir a partir de Queen,
+siguiendo una cadena de artistas hasta el fondo antes de volver'.
+Por qué DFS: no busca lo más cercano sino recorrer TODO lo alcanzable;
+va hasta el final de cada cadena y recién ahí retrocede.
+
+Queen (rock)
+  Soda Stereo (rock)
+    Harry Styles (pop, rock)
+      The Weeknd (pop)
+        Dua Lipa (pop)
+          Drake (pop, rap)
+            Eminem (rap)
+              Travis Scott (rap)
+                Kendrick Lamar (rap)
+            BLACKPINK (k-pop, pop)
+              BTS (k-pop)
+
+Se visitaron 11 artistas; cadena más larga: 8 pasos.
+No se alcanzan (otro grupo): Mercedes Sosa
+
+================================================================
+6. Mismo destino, distinto camino: BFS (mínimo) vs DFS (el primero que encuentra)
+================================================================
+Eminem a BTS
+  BFS: Eminem -> Drake -> BLACKPINK -> BTS  (3 salto(s))
+  DFS: Eminem -> Travis Scott -> Drake -> The Weeknd -> Dua Lipa -> Harry Styles -> BLACKPINK -> BTS  (7 salto(s))
+Soda Stereo a Kendrick Lamar
+  BFS: Soda Stereo -> Harry Styles -> Drake -> Kendrick Lamar  (3 salto(s))
+  DFS: Soda Stereo -> Queen -> Harry Styles -> The Weeknd -> Dua Lipa -> Drake -> Eminem -> Travis Scott -> Kendrick Lamar  (8 salto(s))
+
+================================================================
+7. Costo: cuánto trabajan en total (todo el recorrido, grafos al azar)
+================================================================
+Cada vértice se visita una vez y cada arista se mira dos veces (una
+desde cada extremo): trabajo proporcional a V + E. Si el tiempo por
+(V + E) se mantiene parecido al duplicar el tamaño, el costo es lineal.
+
+      V        E    BFS ms    DFS ms   BFS ns/(V+E)   DFS ns/(V+E)
+   2000     5986      0.69      1.51             87            189
+   4000    11989      1.65      3.40            103            213
+   8000    23990      5.00      8.12            156            254
+  16000    47993     21.11     18.44            330            288
+  32000    95986     31.85     41.93            249            328
+
+================================================================
+8. Por qué el DFS es iterativo (pila explícita) y no recursivo
+================================================================
+Cadena de 5000 vértices (cada uno conectado al siguiente).
+dfs() iterativo visitó 5000 vértices sin problema.
+DFS recursivo: RecursionError (el límite de Python es 1000 llamadas anidadas).

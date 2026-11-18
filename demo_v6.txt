@@ -1,0 +1,280 @@
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: 
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: Géneros disponibles: folk, k-pop, pop, rap, rock
+¿De qué género querés llegar a un artista nuevo? 
+Desde Eminem no se llega a ningún artista de k-pop: están en grupos separados.
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: 
+BFS (anchura) desde Eminem - orden de visita y saltos:
+  Eminem [0] -> Travis Scott [1] -> Drake [1] -> Kendrick Lamar [1]
+
+DFS (profundidad) desde Eminem - orden de visita y profundidad:
+  Eminem [0] -> Travis Scott [1] -> Drake [2] -> Kendrick Lamar [3]
+
+Ambos visitan los mismos 4 artista(s); cambia el orden y los números.
+En BFS el número es la distancia mínima; en DFS es la profundidad del camino que se siguió.
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: 
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Título: Artista: Género (ej: pop, rock, rap, k-pop, folk): Año (1900-2100): Popularidad (0-100): Canción agregada con id 16. El ranking ya la tiene en cuenta.
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Título: Artista: Género (ej: pop, rock, rap, k-pop, folk): Año (1900-2100): Popularidad (0-100): Canción agregada con id 17. El ranking ya la tiene en cuenta.
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: Título: Artista: Género (ej: pop, rock, rap, k-pop, folk): Año (1900-2100): Popularidad (0-100): Canción agregada con id 18. El ranking ya la tiene en cuenta.
+
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: 
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: Géneros disponibles: folk, k-pop, pop, rap, rock
+¿De qué género querés llegar a un artista nuevo? 
+El artista de k-pop más cercano a Eminem es BLACKPINK, a 2 salto(s):
+  Eminem (rap)
+    -> comparten rap
+  Drake (pop, rap)
+    -> comparten pop
+  BLACKPINK (k-pop, pop)
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: Géneros disponibles: folk, k-pop, pop, rap, rock
+¿De qué género querés llegar a un artista nuevo? 
+El artista de k-pop más cercano a Soda Stereo es BLACKPINK, a 2 salto(s):
+  Soda Stereo (rock)
+    -> comparten rock
+  Harry Styles (pop, rock)
+    -> comparten pop
+  BLACKPINK (k-pop, pop)
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: 
+Exploración en profundidad desde Queen (cada sangría = un paso más adentro de la cadena):
+
+Queen (rock)
+  Soda Stereo (rock)
+    Harry Styles (pop, rock)
+      The Weeknd (pop)
+        Dua Lipa (pop)
+          Drake (pop, rap)
+            Eminem (rap)
+              Travis Scott (rap)
+                Kendrick Lamar (rap)
+            BLACKPINK (k-pop, pop)
+              BTS (k-pop)
+
+Se visitaron 11 artista(s); la cadena más larga tiene 8 paso(s).
+Ojo: la sangría es el camino que tomó el DFS, no la distancia mínima.
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: Artista de partida: 
+BFS (anchura) desde Eminem - orden de visita y saltos:
+  Eminem [0] -> Travis Scott [1] -> Drake [1] -> Kendrick Lamar [1] -> The Weeknd [2] -> Dua Lipa [2] -> Harry Styles [2] -> BLACKPINK [2] -> Soda Stereo [3] -> Queen [3] -> BTS [3]
+
+DFS (profundidad) desde Eminem - orden de visita y profundidad:
+  Eminem [0] -> Travis Scott [1] -> Drake [2] -> Kendrick Lamar [3] -> The Weeknd [3] -> Dua Lipa [4] -> Harry Styles [5] -> Soda Stereo [6] -> Queen [7] -> BLACKPINK [6] -> BTS [7]
+
+Ambos visitan los mismos 11 artista(s); cambia el orden y los números.
+En BFS el número es la distancia mínima; en DFS es la profundidad del camino que se siguió.
+
+--- Conexiones entre artistas ---
+(dos artistas están conectados si comparten género)
+1. Ver el grafo completo
+2. Ver con quién se conecta un artista
+3. Camino más corto entre dos artistas
+4. Artistas a N saltos de un artista
+5. Ver los grupos de artistas separados
+6. Artista más cercano de un género (BFS)
+7. Explorar la red de un artista en profundidad (DFS)
+8. Comparar recorrido BFS y DFS desde un artista
+0. Volver al menú principal
+Elegí una opción: 
+========================================
+ MUSICTCN
+========================================
+1. Buscar canción o artista (texto parcial)
+2. Buscar canción por título exacto (árbol)
+3. Autocompletar título (árbol)
+4. Explorar géneros (k-pop, rap, rock, pop, ...)
+5. Ver top 10 de canciones populares
+6. Listar todo el catálogo
+7. Listar ordenado alfabéticamente (árbol - inorder)
+8. Filtrar canciones
+9. Explorar categorías (árbol general)
+10. Ver jerarquía completa de categorías (recorridos)
+11. Buscar categoría por nombre
+12. Ranking de recomendaciones (heap)
+13. Agregar canción (el ranking se actualiza)
+14. Explorar conexiones entre artistas (grafo)
+15. Recomendaciones personalizadas por perfil (próximamente)
+0. Salir
+----------------------------------------
+Elegí una opción: ¡Hasta la próxima!
