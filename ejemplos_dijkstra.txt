@@ -1,0 +1,6 @@
+Grafo: Grafo(5 vértices, 10 aristas)
+
+BFS (menos saltos):  Dua Lipa -> Billie Eilish  | saltos 1 | costo 13.25
+Dijkstra (menor costo): Dua Lipa -> Harry Styles -> The Weeknd -> Taylor Swift -> Billie Eilish  | saltos 4 | costo 7.21
+
+Dijkstra rodea por artistas intermedios porque un salto grande de popularidad cuesta mucho más que varios chicos.
