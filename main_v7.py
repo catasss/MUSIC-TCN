@@ -38,7 +38,7 @@ from gestor_musica_v7 import CatalogoMusical
 from modelos import Cancion
 from prioridad import CriterioPrioridad
 
-RUTA_DATOS = "datos/canciones.json"
+RUTA_DATOS = "datos/canciones_v7.json"
 RUTA_CATEGORIAS = "datos/categorias.json"
 
 
