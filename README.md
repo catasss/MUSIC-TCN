@@ -1,4 +1,4 @@
-# MUSICTCN — v6
+# MUSICTCN — v7
 
 Programa de terminal para explorar un catálogo de canciones: buscar por
 título/artista, buscar por título exacto y autocompletar (con un árbol
@@ -7,7 +7,7 @@ general), listar, filtrar por género/año/popularidad, obtener un ranking
 dinámico de recomendaciones (con una cola de prioridad) y explorar las
 conexiones entre artistas y sus recorridos (con un grafo y algoritmos BFS / DFS).
 
-Esta v6 incorpora el **Objetivo 8: recorridos de grafos** —implementación de BFS
+La v7 suma el Objetivo 9: camino mínimo con Dijkstra. La v6 incorpora el **Objetivo 8: recorridos de grafos** —implementación de BFS
 y DFS para responder consultas reales de cercanía y exploración profunda sobre
 la red de artistas— sobre la base de la v5 (Objetivo 7: grafos y modelo de
 conexiones), la v4 (Objetivo 6: "Que el sistema elija primero", colas de
@@ -21,9 +21,10 @@ corazón del sistema").
 |---|---|---|---|
 | v4 | `main.py` | `gestor_musica.py` | hasta el ranking con heap (opciones 1 a 13) |
 | v5 | `main_v5.py` | `gestor_musica_v5.py` | la v4 más el grafo de artistas (opción 14) |
-| **v6** | **`main_v6.py`** | **`gestor_musica_v6.py`** | la v5 más recorridos BFS y DFS para casos de uso reales |
+| v6 | main_v6.py | `gestor_musica_v6.py`| la v5 más recorridos BFS y DFS para casos de uso reales |
+| v7: main_v7.py | gestor_musica_v7.py | camino mínimo con Dijkstra. 
 
-La v6 es la versión más reciente. Las versiones anteriores se conservan sin
+La v7 es la versión más reciente. Las versiones anteriores se conservan sin
 cambios, y los módulos compartidos (`modelos.py`, los árboles, el heap,
 `prioridad.py`, `grafo.py`) sirven para todas.
 
@@ -31,6 +32,14 @@ cambios, y los módulos compartidos (`modelos.py`, los árboles, el heap,
 
 ```
 musictcn/
+├── main_v7.py
+├── gestor_musica_v7_py
+├── grafo_ponderado.py
+├── test_dijkstra.py
+├── ejemplos_dijkstra.py
+├── analisis_complejidad_tp9.md
+├── datos/canciones_v7.json
+├── docs/
 ├── main_v6.py                         # Interfaz de terminal de la v6 (incluye recorridos TP 8)
 ├── gestor_musica_v6.py                # CatalogoMusical de la v6: v5 más métodos de consulta BFS/DFS
 ├── main_v5.py                         # Interfaz de terminal de la v5
@@ -77,7 +86,6 @@ musictcn/
 ├── demo_v2.txt                          # Transcripción de una sesión de ejemplo (v2)
 ├── demo_v3.txt                          # Transcripción de una sesión de ejemplo (v3)
 ├── demo_v4.txt                          # Transcripción de una sesión de ejemplo (v4)
-├── demo_v5.txt                          # Transcripción de una sesión de ejemplo (v5)
 └── README.md
 ```
 
@@ -115,6 +123,7 @@ musictcn/
   mantiene los árboles, los heaps y el grafo sincronizados con los datos. La v6
   agrega las consultas basadas en recorridos reales (`consultar_artista_mas_cercano_bfs`
   y `explorar_comunidad_profundidad_dfs`).
+  **gestor_musica_v7.py el camino minimo.
 - **`main.py`** (y sus versiones v5 y v6) solo se encarga de la interfaz de terminal
   (menú, `input()`, `print()`); nunca lee archivos ni conoce los árboles o grafos
   directamente —esa responsabilidad es del gestor. Así los módulos quedan desacoplados.
@@ -127,10 +136,12 @@ musictcn/
 
 ```bash
 cd musictcn
+python3 main_v7.py
 python3 main_v6.py     # v6, la más reciente (con recorridos BFS y DFS para TP 8)
 python3 main_v5.py     # v5 (con grafo de artistas)
 python3 main.py        # v4 (hasta ranking con heap)
 ```
+En windows alguna vez puede ser que funcione mejor py main_v7.py en vez de python3 (a tener en cuenta basado en experiencia de una de mis pcs!)
 
 Vas a ver un menú como este:
 
@@ -152,15 +163,14 @@ Vas a ver un menú como este:
 12. Ranking de recomendaciones (heap)
 13. Agregar canción (el ranking se actualiza)
 14. Explorar conexiones entre artistas (grafo)
-15. Explorar la red con BFS / DFS (TP 8)
-16. Recomendaciones personalizadas por perfil (próximamente)
+15. Recomendaciones personalizadas por perfil (próximamente)
 0. Salir
 ----------------------------------------
 ```
 
 Elegí una opción escribiendo el número y presionando Enter.
 
-## Operaciones implementadas en v6
+## Operaciones implementadas en v7
 
 | # | Operación | Estrategia | Descripción |
 |---|-----------|-----------|-------------|
